@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+substitutions/__init__.py
+substitutions/base.py
+substitutions/models.py
+substitutions.egg-info/PKG-INFO
+substitutions.egg-info/SOURCES.txt
+substitutions.egg-info/dependency_links.txt
+substitutions.egg-info/not-zip-safe
+substitutions.egg-info/requires.txt
+substitutions.egg-info/top_level.txt
+tests/__init__.py
