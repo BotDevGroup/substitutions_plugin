@@ -16,7 +16,7 @@ test_requirements = [
 ]
 
 setup(
-    name='substitutions',
+    name='substitutions_plugin',
     version='0.1.0',
     description="A plugin for marvinbot to substitute text matching regular expressions",
     long_description=readme,
@@ -26,8 +26,8 @@ setup(
     packages=[
         'substitutions',
     ],
-    package_dir={'substitutions':
-                 'substitutions'},
+    package_dir={'substitutions_plugin':
+                 'substitutions_plugin'},
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",
