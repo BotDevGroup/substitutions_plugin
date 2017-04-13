@@ -25,7 +25,7 @@ class Substitutions(Plugin):
         pass
 
     def setup_handlers(self, adapter):
-        self.add_handler(MessageHandler([CommonFilters.text, CommonFilters.reply], self.on_match), priority=80)
+        self.add_handler(MessageHandler([CommonFilters.text, CommonFilters.reply], self.on_match), priority=70)
 
     def setup_schedules(self, adapter):
         pass
