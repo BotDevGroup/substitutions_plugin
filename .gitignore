@@ -2,3 +2,5 @@
 substitutions_plugin\.egg-info/
 
 \.idea/
+
+substitutions_plugin/__pycache__/
