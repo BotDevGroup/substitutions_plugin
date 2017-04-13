@@ -21,11 +21,12 @@ class Substitutions(Plugin):
         }
 
     def configure(self, config):
+        self.plain_pattern = config.get('pattern')
         self.pattern = re.compile(config.get('pattern'))
         pass
 
     def setup_handlers(self, adapter):
-        self.add_handler(MessageHandler([CommonFilters.text, CommonFilters.reply], self.on_match), priority=70)
+        self.add_handler(MessageHandler([CommonFilters.reply, RegexpFilter(self.plain_pattern)], self.on_match), priority=70)
 
     def setup_schedules(self, adapter):
         pass
