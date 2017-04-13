@@ -24,7 +24,7 @@ setup(
     author_email='ricardo.arturo.cabral@gmail.com',
     url='https://github.com/cameri/substitutions',
     packages=[
-        'substitutions',
+        'substitutions_plugin',
     ],
     package_dir={'substitutions_plugin':
                  'substitutions_plugin'},
@@ -32,7 +32,7 @@ setup(
     install_requires=requirements,
     license="MIT license",
     zip_safe=False,
-    keywords='substitutions',
+    keywords='marvin telegram substitutions plugin replacement',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
