@@ -2,6 +2,7 @@
 from marvinbot.utils import get_message
 from marvinbot.plugins import Plugin
 from marvinbot.handlers import CommonFilters, MessageHandler
+from marvinbot.filters import RegexpFilter
 import logging
 import re
 
@@ -24,12 +25,12 @@ class Substitutions(Plugin):
         pass
 
     def setup_handlers(self, adapter):
-        self.add_handler(MessageHandler([CommonFilters.text], self.on_text), priority=90)
+        self.add_handler(MessageHandler([CommonFilters.text, CommonFilters.reply], self.on_match), priority=90)
 
     def setup_schedules(self, adapter):
         pass
 
-    def on_text(self, update):
+    def on_match(self, update):
         message = get_message(update)
         text = message.text
 
