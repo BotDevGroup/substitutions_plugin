@@ -17,7 +17,7 @@ class Substitutions(Plugin):
         return {
             'short_name': self.name,
             'enabled': True,
-            'pattern': r'^s/(?P<pattern>.+?)(?<!\\)/(?P<replacement>.*)$'
+            'pattern': r'^s/(?P<pattern>.+?)(?<!\\)/(?P<replacement>.*)/?$'
         }
 
     def configure(self, config):
