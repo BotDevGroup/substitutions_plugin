@@ -17,7 +17,7 @@ class Substitutions(Plugin):
         return {
             'short_name': self.name,
             'enabled': True,
-            'pattern': r'^s/(?P<pattern>.+?)(?<!\\)/(?P<replacement>.*?)/?$'
+            'pattern': r'^s/(?P<pattern>.+?)(?<!\\)/(?P<replacement>.*?)/(?P<flags>[giI]*)$'
         }
 
     def configure(self, config):
@@ -59,14 +59,18 @@ class Substitutions(Plugin):
 
         user_pattern = match.group('pattern')
         user_replacement = match.group('replacement')
+        user_flags = match.group('flags')
 
         # Try compiling user pattern
         try:
-            pattern = re.compile(user_pattern)
+            flags = re.IGNORECASE if 'i' in user_flags or 'I' in user_flags else 0
+
+            pattern = re.compile(user_pattern, flags)
             if not pattern:
                 return
 
-            response_text = pattern.sub(user_replacement, message.reply_to_message.text)
+            count = 0 if 'g' in user_flags else 1
+            response_text = pattern.sub(user_replacement, message.reply_to_message.text, count=count)
 
             self.adapter.bot.sendMessage(chat_id=message.chat_id,
                                          reply_to_message_id=message.reply_to_message.message_id,
