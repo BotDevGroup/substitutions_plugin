@@ -62,7 +62,7 @@ class Substitutions(Plugin):
 
         # Try compiling user pattern
         try:
-            pattern = re.compile(user_pattern, flags=re.IGNORECASE)
+            pattern = re.compile(user_pattern)
             if not pattern:
                 return
 
