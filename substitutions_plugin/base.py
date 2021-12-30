@@ -32,7 +32,12 @@ class Substitutions(Plugin):
         pass
 
     def on_match(self, update):
-        message = get_message(update)
+        message = update.effective_message
+
+        # No message
+        if message is None:
+            return
+
         text = message.text
 
         # Quit early if there's no text
