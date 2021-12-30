@@ -66,10 +66,11 @@ class Substitutions(Plugin):
             if not pattern:
                 return
 
-            response_text = pattern.sub("<b>{}</b>".format(user_replacement), message.reply_to_message.text)
+            response_text = pattern.sub(user_replacement, message.reply_to_message.text)
 
             self.adapter.bot.sendMessage(chat_id=message.chat_id,
-                                         text="<b>Did you mean</b>❔\n{}".format(response_text),
-                                         parse_mode='HTML')
+                                         reply_to_message_id=message.reply_to_message.message_id,
+                                         text=response_text,
+                                         disable_web_page_preview=True)
         except Exception as ex:
             log.info("Exception when compiling user pattern: {}".format(ex))
